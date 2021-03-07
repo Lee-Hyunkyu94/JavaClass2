@@ -96,7 +96,7 @@ public class Ex02ForLoop02 {
         userNumber = sc.nextInt();
         
         for(int i = 1;i <= userNumber; i++) {
-            result+=i;
+            result += i;
         }
         System.out.printf("1부터 [%d]까지의 합:[%d]\n",userNumber,result);
         
