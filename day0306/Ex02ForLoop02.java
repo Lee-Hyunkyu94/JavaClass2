@@ -23,7 +23,7 @@ public class Ex02ForLoop02 {
         int start = 1;
         int end = 10;
 
-        for (int i = start; i <= 10; i++) {
+        for (int i = start; i <= end; i++) {
             System.out.println();
 
         }
