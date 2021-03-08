@@ -115,6 +115,9 @@ public class Ex02ForLoop02 {
             result *= i;
         }
                 System.out.printf("1부터 [%d]까지의 곱:[%d]\n",userNumber,result);
+        sc.close();
+    }
+}
         
         
         
