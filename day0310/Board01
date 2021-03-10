@@ -1,0 +1,99 @@
+package day0310;
+
+import java.util.Scanner;
+
+// 게시판 프로그램
+
+// 게시글에는 제목, 작성자, 내용 의 내용이 있다.
+// 이 프로그램은 총 6개의 게시글을 관리할 수 있다.
+// 단, 중복된 제목의 글은 작성할 수 없다.
+// 또한 입력과 출력은 분리되어있다.
+// 2시 50분까지
+
+public class Board01 {
+    static final int SIZE = 6;
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] subject = new String[SIZE];
+        String[] name = new String[SIZE];
+        String[] xxx = new String[SIZE];
+        int idx = 0;
+
+        while (true) {
+
+            System.out.println("1. 입력 2. 출력");
+            System.out.println("> ");
+            int userChoice = sc.nextInt();
+            if (userChoice == 1) {
+
+                // 1. 입력
+                if (idx < SIZE) {
+
+                    System.out.println("제목을 입력하시오");
+                    System.out.println("> ");
+                    sc.nextLine();
+                    String st = new String(sc.nextLine());
+                    // a. 제목 중복 처리
+                    boolean inputChecker = true;
+
+                    for (int i = 0; i < idx; i++) {
+                        if (st.equals(subject[i])) {
+                            inputChecker = false;
+                            break;
+                        }
+                    }
+                    while(!inputChecker) {
+                        System.out.println("중복임");
+                        System.out.println("제목을 입력하시오");
+                        System.out.println("> ");
+                        st = new String(sc.nextLine());
+                        inputChecker = true;
+                        
+                        for(int i = 0; i <idx; i++) {
+                            if(st.equals(subject[i])) {
+                                inputChecker = false;
+                                break;
+                            }
+                        }
+                        
+
+                    }
+                    subject[idx] = new String(st);
+
+                    // 이름입력
+                    System.out.println("이름을 입력하시오");
+                    System.out.println("> ");
+                    name[idx] = new String(sc.nextLine());
+
+                    // 내용 입력
+
+                    System.out.println("내용을 입력하시오");
+                    System.out.println("> ");
+                    xxx[idx] = new String(sc.nextLine());
+
+                    idx++;
+                } else {
+                    System.out.println("더이상 입력하실수 없습니다.");
+                }
+
+            }
+            // 2. 출력
+            else if (userChoice == 2) {
+                if (idx > 0) {
+                    for (int i = 0; i < idx; i++) {
+                        System.out.printf("제목: %s 이름: %s 내용: %s\n", subject[i], name[i], xxx[i]);
+
+                    }
+                } else {
+                    System.out.println("입력이나 더 하고 오십시오");
+                }
+
+                break;
+            }
+
+        }
+        sc.close();
+    }
+}
