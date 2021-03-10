@@ -12,8 +12,11 @@ public class StarsPrinter03 {
         char[][] stars = new char[userNumber][userNumber];
 
         for (int i = 0; i < stars.length; i++) {
-            for (int j = 0; j < i; j++) {
+            for (int j = 0; j < stars.length; j++) {
                 stars[i][j] = '*';
+            }
+            for(int j =0; j < stars.length-i-1;j++){
+                star[i][j] = ' ';
             }
         } // 5행일때 다 찍혀야함 j=0 부터 시작
           // 4행일때 4개 j = 1부터 4까지
