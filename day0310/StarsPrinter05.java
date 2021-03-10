@@ -15,12 +15,10 @@ public class StarsPrinter05 {
         char[][] stars = new char[userNumber][userNumber2];
 
         for (int i = 0; i < stars.length; i++) {
-            for (int j = 0; j <= stars[i].length; j++) {
+            for (int j = stars.length-i; j <= stars[i].length; j++) {
                 stars[i][j] = '*';
             }
-            for(int j =i; j < stars.length;i++) {
-                stars[i][j] = '.';
-            }
+            
 
         }
 
