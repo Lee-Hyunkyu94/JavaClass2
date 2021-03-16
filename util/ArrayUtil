@@ -242,4 +242,87 @@ public class ArrayUtil {
     public static String[] removeByElement(String[] arr, String element) {
         return removeByIndex(arr, indexOf(arr, element));
     }
+     // 1
+    public static int size(Student[] arr) {
+        return arr.length;
+    }
+
+    // 2
+    public static boolean contains(Student[] arr, Student s) {
+        for (int i = 0; i < size(arr); i++) {
+            if (arr[i].equals(s)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // 3
+    public static int indexOf(Student[] arr, Student s) {
+        for (int i = 0; i < size(arr); i++) {
+            if (arr[i].equals(s)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // 4
+    public static int lastIndexOf(Student[] arr, Student s) {
+        for (int i = size(arr) - 1; i >= 0; i--) {
+            if (arr[i].equals(s)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // 5
+    public static Student[] add(Student[] arr, Student s) {
+        Student[] temp = arr;
+        arr = new Student[size(arr) + 1];
+        for (int i = 0; i < size(temp); i++) {
+            arr[i] = temp[i];
+        }
+        arr[size(arr) - 1] = s;
+        return arr;
+    }
+
+    // 6
+    public static Student[] add(Student[] arr, int index, Student s) {
+        if (index >= 0 && index <= size(arr)) {
+            Student[] temp = arr;
+            arr = new Student[size(arr) + 1];
+            for (int i = 0; i < index; i++) {
+                arr[i] = temp[i];
+            }
+            arr[index] = s;
+            for (int i = index; i < size(temp); i++) {
+                arr[i + 1] = temp[i];
+
+            }
+        }
+        return arr;
+    }
+
+    // 7
+    public static Student[] removeByIndex(Student[] arr, int index) {
+        if (index >= 0 && index < size(arr)) {
+            Student[] temp = arr;
+            arr = new Student[size(arr) - 1];
+            for (int i = 0; i < index; i++) {
+                arr[i] = temp[i];
+            }
+            for (int i = index; i < size(arr); i++) {
+                arr[i] = temp[i + 1];
+            }
+        }
+        return arr;
+    }
+
+    // 8
+    public static Student[] removeByElement(Student[] arr, Student s) {
+        return removeByIndex(arr, indexOf(arr, s));
+
+    }
 }
