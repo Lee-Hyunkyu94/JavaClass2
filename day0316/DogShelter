@@ -1,0 +1,89 @@
+package day0316;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import day0315.Dog;
+import util.ScannerUtil;
+
+// 우리가 기존에 만들었던 Dog 클래스와 ArrayList를 사용하여
+// 강아지 임시 보호소 프로그램을 만들어보세요
+//
+// 기본적으로 ArrayList 안에 3마리의 강아지를 임의로 넣고
+// while을 시작하세요
+
+// 1. 잃어버린 개 등록 2. 일치하는 개 찾기 3. 주인 찾은 개 목록에서 삭제 4. 종료
+// 4가지 기능이 있습니다.
+// 4시 40분 까지.
+public class DogShelter {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Dog> list = new ArrayList<>();
+
+        Dog d1 = new Dog("알", "001", "푸들", 1);
+        list.add(d1);
+        Dog d2 = new Dog("베르", "002", "말티즈", 2);
+        list.add(d2);
+        Dog d3 = new Dog("도", "003", "치와와", 3);
+        list.add(d3);
+
+        while (true) {
+            System.out.println();
+            String message = new String("1. 잃어버린 개 등록 2. 일치하는 개 찾기 3. 주인 찾은 개 목록에서 삭제 4. 종료");
+            int userChoice = ScannerUtil.nextInt(sc, message, 1, 4);
+
+            if (userChoice == 1) {
+                // 1. 잃어버린 개를 리스트에 등록
+                Dog d = new Dog();
+                message = new String("강아지의 등록번호을 입력해주세요.");
+                d.setId(ScannerUtil.nextLine(sc, message));
+                while (list.contains(d)) {
+                    System.out.println("해당 번호는 이미 등록된 번호입니다.");
+                    d.setId(ScannerUtil.nextLine(sc, message));
+                }
+                message = new String("강아지의 이름을 입력해주세요.");
+                d.setName(ScannerUtil.nextLine(sc, message));
+                message = new String("강아지의 품종을 입력해주세요.");
+                d.setBreed(ScannerUtil.nextLine(sc, message));
+                message = new String("강아지의 나이을 입력해주세요.");
+                d.setAge(ScannerUtil.nextInt(sc, message));
+
+                list.add(d);
+
+            } else if (userChoice == 2) {
+                // 2. 일치하는 개가 있는지 찾기
+                Dog d = new Dog();
+                message = new String("강아지의 등록번호를 입력해주세요.");
+                d.setId(ScannerUtil.nextLine(sc, message));
+                if (list.contains(d)) {
+                    // 등록번호가 일치하는 강아지가 있으므로, 해당 강아지 정보를 보여준다.
+                    int index = list.indexOf(d);
+                    list.get(index).printInfo();
+                    // list.get(list.indexOf(d)).printInfo();
+                } else {
+                    // 등록번호가 일치하는 강아지가 없으므로, 경고 메시지만 추력
+                    System.out.println("해당 등록번호로 등록된 강아지는 이 보호센터에 없습니다.");
+                }
+
+            } else if (userChoice == 3) {
+                // 3. 주인 찾은 개 목록에서 삭제
+                Dog d = new Dog();
+                message = new String("강아지의 등록번호를 입력해주세요");
+                d.setId(ScannerUtil.nextLine(sc, message));
+                if (list.contains(d)) {
+                    System.out.println("해당 강아지는 이 보호센터에서 보호가 종료되었습니다.");
+                    list.remove(d);
+                } else {
+                    System.out.println("해당 등록번호로 등록된 강아지는 이 보호센터에 없습니다.");
+                }
+            } else if (userChoice == 4) {
+                // 4. 종료
+                System.out.println("이용해주셔서 감사합니다.");
+                break;
+
+            }
+        }
+
+        sc.close();
+    }
+}
