@@ -63,5 +63,13 @@ public class User {
     
     // 사용자로부터 넘겨받은 userName과 passWord가 일치하면 true가 리턴되는
     // logIn 메소드
+    public boolean logIn(User u) {
+        if(userName.equals(u.userName) && passWord.equals(u.passWord)) {
+            return true;
+        }
+            
+        return false;
+        
+    }
     
 }
