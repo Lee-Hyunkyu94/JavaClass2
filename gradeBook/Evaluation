@@ -1,0 +1,69 @@
+package gradeBook;
+
+import java.util.Calendar;
+
+import board.Reply;
+
+public class Evaluation {
+    // 필드
+
+    private int evalueId;
+    private int evalueTId;
+    private int evalueSId;
+    private String content;
+    private Calendar writtenDate;
+
+    // 메서드
+    public int getEvalueId() {
+        return evalueId;
+    }
+
+    public void setEvalueId(int evalueId) {
+        this.evalueId = evalueId;
+    }
+
+    public int getEvalueTId() {
+        return evalueTId;
+    }
+
+    public void setEvalueTId(int evalueTId) {
+        this.evalueTId = evalueTId;
+    }
+
+    public int getEvalueSId() {
+        return evalueSId;
+    }
+
+    public void setEvalueSId(int evalueSId) {
+        this.evalueSId = evalueSId;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Calendar getWrittenDate() {
+        return writtenDate;
+    }
+
+    public void setWrittenDate(Calendar writtenDate) {
+        this.writtenDate = writtenDate;
+    }
+
+    // id 값으로 equals() 메서드 만들기
+    public boolean equals(Object o) {
+
+        if (o instanceof Evaluation) {
+            Evaluation e = (Evaluation) o;
+            if (evalueId == e.evalueId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+}
