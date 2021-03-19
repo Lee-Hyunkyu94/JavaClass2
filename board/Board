@@ -67,12 +67,12 @@ public class Board {
         this.writtenDate = writtenDate;
     }
 
-    public Calendar getUpdateDate() {
+    public Calendar getUpdatedDate() {
         return updatedDate;
     }
 
-    public void setUpdateDate(Calendar updateDate) {
-        this.updatedDate = updateDate;
+    public void setUpdatedDate(Calendar updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     // id 를 기준으로 한 equals()
