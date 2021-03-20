@@ -1,52 +1,59 @@
 package gradeBook;
 
+//교사 클래스(교사 번호, 이름, 소속 반)
 public class Teacher {
     // 필드
-    private int teacherId;
-    private String LogTId;
-    private String LogTPw;
-    private String teacherName;
-    private int teacherClassRoom;
+    // 교사 번호
+    private int id;
+    // 교사가 로그인 시 사용할 아이디
+    private String username;
+    // 교사가 로그인 시 사용할 비밀번호
+    private String password;
+    // 교사 이름
+    private String name;
+    // 교사 소속반
+    private int group;
 
-    // 메서드
-    public int getTeacherId() {
-        return teacherId;
+    // getters/setters
+
+    public int getId() {
+        return id;
     }
 
-    public void setTeacherId(int teacherId) {
-        this.teacherId = teacherId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getLogTId() {
-        return LogTId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogTId(String logTId) {
-        LogTId = logTId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getLogTPw() {
-        return LogTPw;
+    public String getPassword() {
+        return password;
     }
 
-    public void setLogTPw(String logTPw) {
-        LogTPw = logTPw;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getTeacherName() {
-        return teacherName;
+    public String getName() {
+        return name;
     }
 
-    public void setTeacherName(String teacherName) {
-        this.teacherName = teacherName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getTeacherClassRoom() {
-        return teacherClassRoom;
+    public int getGroup() {
+        return group;
     }
 
-    public void setTeacherClassRoom(int teacherClassRoom) {
-        this.teacherClassRoom = teacherClassRoom;
+    public void setGroup(int group) {
+        this.group = group;
     }
 
     // id 값으로 equals() 메서드 만들기
@@ -54,20 +61,25 @@ public class Teacher {
 
         if (o instanceof Teacher) {
             Teacher t = (Teacher) o;
-            if (teacherId == t.teacherId) {
+            if (id == t.id) {
                 return true;
             }
         }
         return false;
     }
-    public boolean logIn(Teacher t) {
-        if(LogTId.equals(t.LogTId) && LogTPw.equals(t.LogTPw)) {
-            return true;
-        }
-            
-        return false;
-        
+
+    // 교사의 정보를 출력할 print()
+    public void print() {
+        // 자신에 대한 평가를 볼수 만 있다매 ㅡㅡ
     }
 
+    public boolean auth(Teacher t) {
+        if (username.equals(t.username) && password.equals(t.password)) {
+            return true;
+        }
+
+        return false;
+
+    }
 
 }
