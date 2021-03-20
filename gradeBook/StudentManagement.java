@@ -399,8 +399,8 @@ public class StudentManagement01 {
                     // 전체 학생을 보는 메소드 실행
                     printAll(); // 교사랑 학생이랑 groupStudents 가 일치 하는 코드
                 } else if (userChoice == 2) {
-                    // 성적이 등록되지 않은 학생만 보는 메소드 실행
-
+                    // 성적이 등록되지 않은 학생만 보는 메소드 실행 -> 성적입력도 해줘야지;;;;
+                    insertScores();
                 } else if (userChoice == 3) {
                     // 평가를 보여주는 메소드 실행
 
@@ -413,7 +413,7 @@ public class StudentManagement01 {
                 userChoice = ScannerUtil.nextInt(sc, message, 1, 3);
                 if (userChoice == 1) {
                     // 학생 목록 보는 메소드 실행
-                    printAll(); // 학새이 자신의 groupStudents 가 일치하는 코드
+                    printAll(); // 학생이 자신의 groupStudents 가 일치하는 코드
                 } else if (userChoice == 2) {
                     // 교사 평가 보는 메소드 실행
 
@@ -569,6 +569,18 @@ public class StudentManagement01 {
         printOne(id);
     }
 
+    //성적 입력 안된 애들 리스트를 가지고 성적 입력을 시켜주는 메소드
+    private static void insertScores() {
+        ArrayList<Student> list = selectByInputSwitch();
+        
+        for(Student s : list) {
+            String message;
+          
+            System.out.printf("번호 :%03d번 이름: %s\n", s.getId(), s.getName());
+            
+        }
+
+    }
 
 
     // 성적 입력이 아직 안된 학생을 리스트로 뽑아주는 메소드
@@ -582,6 +594,8 @@ public class StudentManagement01 {
         return list;
     }
 
+    // 어디에 쓰는 인덱스고? ->성적입력 하게 id 값을 뽑아주는 리스트
+    
     private static Student selectStudentById(int id) {
         Student s = new Student();
         s.setId(id);
