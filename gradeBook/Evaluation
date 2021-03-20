@@ -1,41 +1,52 @@
 package gradeBook;
 
+import java.text.SimpleDateFormat;
+// 평가 클래스(평가 번호, 교사 번호, 학생 번호, 내용, 작성일)
 import java.util.Calendar;
 
 import board.Reply;
 
 public class Evaluation {
-    // 필드
 
-    private int evalueId;
-    private int evalueTId;
-    private int evalueSId;
+    // 필드
+    // 평가 번호
+    private int id;
+    // 해당 평가가 적힌 교사 번호
+    private int teacherId;
+    // 해당 평가를 적은 교사 번호
+    private int studentId;
+    // 내용
     private String content;
+    // 작성일
     private Calendar writtenDate;
 
-    // 메서드
-    public int getEvalueId() {
-        return evalueId;
+    // SimpleDateFormat에서 사용할 형식 스트링
+    private final String DATE_FORMAT = new String("yy년 MM월 dd일");
+
+    // getters/setters 메서드
+
+    public int getId() {
+        return id;
     }
 
-    public void setEvalueId(int evalueId) {
-        this.evalueId = evalueId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getEvalueTId() {
-        return evalueTId;
+    public int getTeacherId() {
+        return teacherId;
     }
 
-    public void setEvalueTId(int evalueTId) {
-        this.evalueTId = evalueTId;
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
     }
 
-    public int getEvalueSId() {
-        return evalueSId;
+    public int getStudentId() {
+        return studentId;
     }
 
-    public void setEvalueSId(int evalueSId) {
-        this.evalueSId = evalueSId;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
     public String getContent() {
@@ -59,11 +70,19 @@ public class Evaluation {
 
         if (o instanceof Evaluation) {
             Evaluation e = (Evaluation) o;
-            if (evalueId == e.evalueId) {
+            if (id == e.id) {
                 return true;
             }
         }
         return false;
     }
 
+    // 평가정보를 출력하는 print()
+    public void print(Teacher t, Student s) {
+        // 교사이름: 평가내용 - 학생이름(날짜)
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
+        System.out.printf("%s: %s - %s(%s)\n", t.getName(), content,
+                s.getName(), sdf.format(writtenDate.getTime()));
+
+    }
 }
