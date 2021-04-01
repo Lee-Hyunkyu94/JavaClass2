@@ -1,0 +1,90 @@
+package exercise;
+
+class SutdaDeck {
+    final int CARD_NUM = 20;
+    SutdaCard[] cards = new SutdaCard[CARD_NUM];
+
+    SutdaDeck() {
+        for (int i = 0; i < cards.length; i++) {
+            int num = i % 10 + 1;
+            boolean isKwang = (i < 10) && (num == 1 || num == 3 || num == 8);
+
+            cards[i] = new SutdaCard(num, isKwang);
+
+        }
+
+    }
+
+    void shuffle() {
+        for (int i = 0; i < cards.length*2; i++) {
+            int j = (int) (Math.random() * cards.length);
+            int k = (int) (Math.random() * cards.length);
+
+            SutdaCard temp = cards[j];
+            cards[j] = cards[k];
+            cards[k] = temp;
+        }
+
+    }
+
+    SutdaCard pick(int index) {
+        if (index < 0 || index >= CARD_NUM) {
+            return null;
+        }
+
+        return cards[index];
+    }
+    
+    SutdaCard pick() {
+        int i = (int) (Math.random()*cards.length);
+        return pick(i);
+    }
+
+}
+
+class SutdaCard {
+    int num;
+    boolean isKwang;
+
+    SutdaCard() {
+        this(1, true);
+    }
+
+    SutdaCard(int num, boolean isKwang) {
+        this.num = num;
+        this.isKwang = isKwang;
+    }
+
+    public String toString() {
+        return num + (isKwang ? "K" : "");
+    }
+}
+
+class Exercise7_1 {
+    public static void main(String[] args) {
+
+        SutdaDeck deck = new SutdaDeck();
+        
+        System.out.println(deck.pick(0));
+        System.out.println(deck.pick());
+        deck.shuffle();
+        
+
+        for (int i = 0; i < deck.cards.length; i++) {
+            System.out.print(deck.cards[i] + ",");
+        }
+            
+        
+        System.out.println();
+        System.out.println(deck.pick(0));
+
+    }
+}
+
+// 7-3
+// 오버라이딩은 자식 클래스가 부모 클래스를 상속받으면서 부모 클래스 안의 메서드를 재정의 하는 것을 말한다.
+// 상속받은 메서드를 자식클래스에 그대로 적용할 수 있는 경우가 거의 없기 때문에 오버라이딩 하는 경우가 많다.
+
+// 7-4
+// d -> 상속은 확장이다. 같거나 넓은 범위로만 변경 가능
+// e -> 예외는 조상 클래스의 메서드보다 많이 선언할 수 없다.
