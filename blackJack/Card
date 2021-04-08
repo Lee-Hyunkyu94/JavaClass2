@@ -1,0 +1,49 @@
+package blackJack;
+
+import java.util.List;
+
+public class Card {
+    // 하트 스페이스 클로버 다이아몬드
+    private String pattern;
+    // 숫자
+    private String number;
+    
+    public Card() {
+        
+    }
+    
+    public Card(String pattern, String number) {
+        this.pattern = pattern;
+        this.number = number;
+    }
+
+    public String getPattern() {
+        return pattern;
+    }
+
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+    
+    // 중복 검사를 위해 equals 메소드
+    public boolean equals(Object o) {
+        if (o instanceof Card) {
+            Card cd = (Card) o;
+            if (number == cd.number && pattern == cd.pattern) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+}
+
