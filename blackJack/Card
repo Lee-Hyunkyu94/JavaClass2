@@ -1,7 +1,5 @@
 package blackJack;
 
-import java.util.List;
-
 public class Card {
     // 하트 스페이스 클로버 다이아몬드
     private String pattern;
@@ -33,16 +31,9 @@ public class Card {
         this.number = number;
     }
     
-    // 중복 검사를 위해 equals 메소드
-    public boolean equals(Object o) {
-        if (o instanceof Card) {
-            Card cd = (Card) o;
-            if (number == cd.number && pattern == cd.pattern) {
-                return true;
-            }
-        }
-
-        return false;
+    @Override
+    public String toString() {
+        return "Card{" + "pattern='" + pattern + ", number='" + number + '}';
     }
 
 }
