@@ -4,48 +4,33 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+
 public class CardDeck {
+    Card card;
     // 카드 리스트
     private List<Card> cards;
 
     // 패턴 (서로 다른 모양)
     private String[] Patterns = { "heart", "spade", "clover", "diamond" };
     private String number;
+    private final int CARD_COUNT = 13;
 
-    // 카드 섞기
+    // 생성자
     public CardDeck() {
         cards = this.newCardDeck();
         Collections.shuffle(cards);
-
     }
-
+ 
+    // 덱 만드는 메소드
     private List<Card> newCardDeck() {
-        List<Card> deck = new ArrayList<Card>();
+        List<Card> deck = new ArrayList<>();
         // for문으로 카드 덱 숫자
         for (String pattern : Patterns) {
-            for (int i = 0; i < deck.size(); i++) {
+            for (int i = 1; i <= CARD_COUNT; i++) {
+                Card card = new Card();
+                number = this.inttoString(i);
 
-                String number = "";
-
-                switch (i) {
-                case 1:
-                    number = "A";
-                    break;
-
-                case 11:
-                    number = "J";
-                    break;
-
-                case 12:
-                    number = "Q";
-                    break;
-
-                case 13:
-                    number = "K";
-                    break;
-                }
-
-                Card card = new Card(pattern, number);
+                card = new Card(pattern, number);
                 deck.add(card);
             }
         }
@@ -54,33 +39,47 @@ public class CardDeck {
 
     }
 
-    // 카드를 뽑앙돼
-    public Card selectCard(){
-        return null;
-        
+    // 숫자를 A J Q K 로 변환하는 메소드.
+    public String inttoString(int number) {
+        if (number == 1) {
+            return "A";
+        } else if (number == 11) {
+            return "J";
+        } else if (number == 12) {
+            return "Q";
+        } else if (number == 13) {
+            return "K";
+        }
+
+        return String.valueOf(number);
     }
-    
+
+    public Card selectCard(){
+        Card selectedCard = getRandomCard();
+        cards.remove(selectedCard);
+        return selectedCard;
+    }
+
+    private Card getRandomCard() {
+        for(int i = 0; i < cards.size(); i++) {
+            int size = i;
+            System.out.println(size);
+            return cards.get(size);
+            
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
-    StringBuilder sb = new StringBuilder();
-    
-        for(Card card : cards) {
+        StringBuilder sb = new StringBuilder();
+
+        for (Card card : cards) {
             sb.append(card.toString());
             sb.append("\n");
         }
-        
+
         return sb.toString();
     }
-    
-    // 중복검사
-    public boolean validateNumberPatterns(String number, String pattern) {
-        for(Card cd : cards) {
-            if(number == cd.getNumber() && pattern == cd.getPattern()) {
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    
+
 }
