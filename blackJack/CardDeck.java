@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class CardDeck {
+public class CardDeck{
     Card card;
     // 카드 리스트
     private List<Card> cards;
@@ -13,6 +13,7 @@ public class CardDeck {
     // 패턴 (서로 다른 모양)
     private String[] Patterns = { "heart", "spade", "clover", "diamond" };
     private String number;
+    private int point;
     private final int CARD_COUNT = 13;
 
     // 생성자
@@ -30,7 +31,7 @@ public class CardDeck {
                 Card card = new Card();
                 number = this.inttoString(i);
 
-                card = new Card(pattern, number);
+                card = new Card(pattern, number, point);
                 deck.add(card);
             }
         }
@@ -52,6 +53,13 @@ public class CardDeck {
         }
 
         return String.valueOf(number);
+    }
+    
+    private int intopoint(int number) {
+        if(number >= 11) {
+            return 10;
+        }
+        return number;
     }
 
     public Card selectCard(){
