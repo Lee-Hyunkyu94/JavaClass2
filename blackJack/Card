@@ -5,14 +5,18 @@ public class Card {
     private String pattern;
     // 숫자
     private String number;
+    // point 값
+    private int point;
+    
     
     public Card() {
         
     }
     
-    public Card(String pattern, String number) {
+    public Card(String pattern, String number, int point) {
         this.pattern = pattern;
         this.number = number;
+        this.point = point;
     }
 
     public String getPattern() {
@@ -31,10 +35,17 @@ public class Card {
         this.number = number;
     }
     
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
+    }
+
     @Override
     public String toString() {
         return "Card{" + "pattern='" + pattern + ", number='" + number + '}';
     }
 
 }
-
