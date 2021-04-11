@@ -104,7 +104,12 @@ class Dealer extends Rule {
 
     @Override
     void receiveCard(Card card) {
-        this.deck.add(card);
+        if(this.checkSum()) {
+            this.deck.add(card);
+            this.printCards();
+        } else {
+            System.out.println("카드의 합이 17 이상입니다. 더이상 카드를 받을 수 없습니당.");
+        }
     }
 
     @Override
@@ -130,16 +135,14 @@ class Dealer extends Rule {
         return sum;
     }
 
-    public void checkSum() {
+    public boolean checkSum() {
 
-        while (true) {
-            if (sum <= 16) {
-                this.receiveCard(card);
-            } else {
+        if (sum <= 16) {
+                return true;
+            
 
-                break;
-            }
-
+        } else {
+            return false;
         }
 
     }
